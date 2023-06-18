@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th >Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Email</th>
+                <th>Contraseña</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {{#each title}}
+                <tr>
+                    <td>{{id_usuario}}</td>
+                    <td>{{nombres}}</td>
+                    <td>{{apellidos}}</td>
+                    <td>{{email}}</td>
+                    <td>{{contrasena}}</td>
+                    <td>{{estado}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</body>
+</html>
