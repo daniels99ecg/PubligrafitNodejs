@@ -25,7 +25,7 @@
 <div class="page-flex">
   <!-- ! Sidebar -->
   <aside class="sidebar" id="header">
-    <script src="./validar/header.js"></script>
+  {{>header}}
 </aside>
   <div class="main-wrapper">
     <!-- ! Main nav -->
@@ -65,7 +65,7 @@
   
       </div>
     <div class="col-12 row mr-5">
-      <button type="button" class="btn btn-primary mr-5" onclick="validarInsumos()">Registrar</button>
+      <button type="button" class="btn btn-primary mr-5" onclick="validarAInsumos()">Actualizar</button>
       <button type="button" class="btn btn-danger ">Cancelar</button>
     </div>
   </form>
@@ -93,7 +93,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  <script src="sweetalert2.min.js"></script>
  <link rel="stylesheet" href="sweetalert2.min.css">
-
 
 <!-- Chart library -->
 <script src="./plugins/chart.min.js"></script>

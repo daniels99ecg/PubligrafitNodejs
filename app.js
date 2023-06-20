@@ -1,6 +1,7 @@
 const express=require('express');
 const resApi = require('./Router/index.js');
 const hbs=require('hbs');
+
 const path=require('path');
 
 
@@ -12,7 +13,6 @@ app.use(express.json());
 
 app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 
 hbs.registerPartials(__dirname + '/View', function (err) {});

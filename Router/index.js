@@ -1,10 +1,12 @@
 
-const resSeleccionar= require('./seleccionar.js');
+const resSeleccionar= require('./Usuarios.js');
 
 
 function resApi(app){
     
-    app.use('/usuarios', resSeleccionar)
+    app.use('/usuarios', resSeleccionar);
+   
+
 }
 
 module.exports=resApi;
