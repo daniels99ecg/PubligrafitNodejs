@@ -2,7 +2,7 @@ const express=require('express')
 const Router=express.Router()
 const conexion=require('../database/db');
 const path=require('path');
-
+const Swal =require('sweetalert2');
 
 Router.use(express.static('public'));
 Router.use(express.static(path.join(__dirname, 'public')));
@@ -25,11 +25,17 @@ Router.get('/', (req, res)=>{
 
 
 Router.get('/create', (req, res)=>{
-    
+    //validacion 
+
+
+   
+
+
     res.status(200).render('../View/Registrar-Usuarios');
 
   
 })
+
 
 
 Router.post('/save', async (req, res)=>{
@@ -41,13 +47,18 @@ Router.post('/save', async (req, res)=>{
     const contrasena=req.body.contrasena;
    
 
-     conexion.query(`INSERT INTO usuario SET ?`, {fk_rol2:fk_rol2, nombres:nombres, apellidos:apellidos, email:email, contrasena:contrasena, estado:1}, function(error, result, fields){
+    conexion.query(`INSERT INTO usuario SET ?`, {fk_rol2:fk_rol2, nombres:nombres, apellidos:apellidos, email:email, contrasena:contrasena, estado:1}, function(error, result, fields){
         if(error){
             console.log(error);
         }else{
+         
             res.redirect('/usuarios');
         }     
         });
+    
+
+
+    
 })
 
 
@@ -71,7 +82,7 @@ const id= parseInt(req.params.id);
 Router.get('/update/:id', (req, res)=>{
     const id= parseInt(req.params.id);
     
-    conexion.query(`SELECT  nombres, apellidos, email, contrasena, estado FROM usuario WHERE id_usuario='${id}'` , function(error, result, fields){
+    conexion.query(`SELECT id_usuario, nombres, apellidos, email, contrasena, estado FROM usuario WHERE id_usuario='${id}'` , function(error, result, fields){
         if(error){
             throw error;
         }else{
@@ -85,8 +96,9 @@ Router.get('/update/:id', (req, res)=>{
     })
 
 
-    Router.post('/update/:id',(req, res)=>{ 
-        const id= parseInt(req.params.id);
+    Router.post('/update/in/',(req, res)=>{ 
+        const id=parseInt(req.body.id);
+      
         const fk_rol2=parseInt(req.body.fk_rol2);
         const nombres=req.body.nombres;
         const apellidos=req.body.apellidos;
@@ -94,7 +106,7 @@ Router.get('/update/:id', (req, res)=>{
         const contrasena=req.body.contrasena;
        
     
-        conexion.query(`UPDATE usuario SET fk_rol2:${fk_rol2}, nombres:${nombres}, apellidos:${apellidos}, email:${email}, contrasena:${contrasena}, estado:1 WHERE id_usuario=${id}`, function(error, result, fields){
+        conexion.query(`UPDATE usuario SET fk_rol2=${fk_rol2}, nombres='${nombres}', apellidos='${apellidos}', email='${email}', contrasena='${contrasena}', estado=1 WHERE id_usuario='${id}'`, function(error, result, fields){
             if(error){
                 console.log(error);
             }else{

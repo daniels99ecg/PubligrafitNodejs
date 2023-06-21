@@ -24,7 +24,7 @@ app.set('views', __dirname + '/View');
 
 
 app.get('/', (req, res)=>{
-    res.send('Pruebas')
+    res.status(200).render('../View/dashboard');
 })
 
 resApi(app);

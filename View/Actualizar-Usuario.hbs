@@ -4513,7 +4513,7 @@ select{
 
     <div class="card-body">
 {{#each title}}
-   <form action="/usuarios/update/{{id_usuario}}" method="POST">
+   <form action="/usuarios/update/in/" method="post">
     <div class="text-center">
     <img class="img-fluid ml-5" src="https://cdn-icons-png.flaticon.com/512/359/359858.png" alt="">
   </div>
@@ -4522,6 +4522,7 @@ select{
     
       
       <div class="col-xs-4">
+        <input type="text" value="{{id_usuario}}" name="id" style="display: none;"> 
         <label for="inputEmail4" class="form-label">Nombres(*)</label>
 
         <input type="text" class="form-control" value="{{nombres}}"  placeholder="Nombre" aria-label="Last name" id="nombre" name="nombres">
