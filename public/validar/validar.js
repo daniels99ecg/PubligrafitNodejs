@@ -59,6 +59,11 @@ function validart(){
             Buttons: true
           }).then((result) => {
             if (result.isConfirmed) {
+
+              //Linea de codigo muy importante para el cambio de type button a submit
+              const formulario=document.getElementById('pruebas');
+              formulario.submit();
+
               swalWithBootstrapButtons.fire(
                 'Registro Enviado!',
                 'Your file has been deleted.',
@@ -74,9 +79,14 @@ function validart(){
                 'error'
               )
             }
+           
           })
+         
+         
         }
     }
+
+
 
 // Validar Ventas Andrés
 

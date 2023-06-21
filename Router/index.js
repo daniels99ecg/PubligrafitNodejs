@@ -1,11 +1,11 @@
 
-const resSeleccionar= require('./Usuarios.js');
+const resUsuarios= require('./Usuarios.js');
 
 
 function resApi(app){
     
-    app.use('/usuarios', resSeleccionar);
-   
+    app.use('/usuarios', resUsuarios);
+  
 
 }
 
