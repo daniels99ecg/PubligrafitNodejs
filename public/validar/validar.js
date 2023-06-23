@@ -2,11 +2,11 @@
 
 
 
-
+//Pruebas de estado
 function estado(){
   
 
-  const validar=document.getElementById('estado');
+  const validar=document.getElementById('switch-label');
   
   if(validar.checked){
     localStorage.setItem('estado', true);

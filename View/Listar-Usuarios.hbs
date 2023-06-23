@@ -68,7 +68,12 @@
                     
                 
            
-            <td><input type="checkbox" name="estado" id="estado" onclick="estado()" checked></td>
+            {{!-- <td><input type="checkbox" name="estado" id="estado" onclick="estado()" checked></td> --}}
+            <td><div class="switch-button">
+              <input type="checkbox" name="switch-button" id="switch-label" onclick="estado()" checked class="switch-button__checkbox" >
+              <label for="switch-label" class="switch-button__label"></label>
+          </div></td>
+
             <td>
               <a href="/usuarios/update/{{id_usuario}}"> <button type="button" class="btn btn-outline-secondary">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
