@@ -10,11 +10,11 @@ Router.use(express.static(path.join(__dirname, 'public')));
 
 Router.get('/', (req, res)=>{
 
-    conexion.query('SELECT u.id_usuario, u.nombres, u.apellidos, u.email, u.contrasena, r.nombre_rol FROM usuario u, rol r WHERE u.fk_rol2=r.id_rol;' , function(error, result, fields){
+    conexion.query('SELECT rxp.id_rol_x_permiso, r.nombre_rol, p.nombre_permiso FROM rol r, rol_x_permiso rxp, permiso p WHERE rxp.fk_rol=r.id_rol and rxp.fk_permiso=p.id_permiso;' , function(error, result, fields){
         if(error){
             throw error;
         }else{
-            res.status(200).render('../View/Listar-Usuarios', {title:result})
+            res.status(200).render('../View/Listar-Roles', {title:result})
 
         }     
         });
@@ -22,52 +22,27 @@ Router.get('/', (req, res)=>{
 })
 
 
-//Generar el reporte
-Router.get('/reporte', (req, res)=>{
-
-    conexion.query(`SELECT u.id_usuario, u.nombres, u.apellidos, u.email, u.contrasena, r.nombre_rol FROM usuario u, rol r WHERE u.fk_rol2=r.id_rol INTO OUTFILE 'C:/Users/emi--/OneDrive/Escritorio/reporte.xls' ` , function(error, result, fields){
-        if(error){
-            throw error;
-        }else{
-            res.redirect('/usuarios');
-
-        }     
-        });
-  
-})
-
-
-//
 Router.get('/create', (req, res)=>{
     //validacion 
 
-    conexion.query(`SELECT id_rol, nombre_rol FROM rol WHERE 1 ` , function(error, result, fields){
-        if(error){
-            throw error;
-        }else{
-            res.status(200).render('../View/Registrar-Usuarios', {title:result});
-
-        }     
-        });
-  
+    res.status(200).render('../View/Registrar-Roles');
   
 })
 
 
 Router.post('/save', async (req, res)=>{
 
-    const fk_rol2=parseInt(req.body.fk_rol2);
-    const nombres=req.body.nombres;
-    const apellidos=req.body.apellidos;
-    const email=req.body.email;
-    const contrasena=req.body.contrasena;
+
+    const nombre=req.body.nombre;
+    const fecha=req.body.fecha;
     
-        conexion.query(`INSERT INTO usuario SET ?`, {fk_rol2:fk_rol2, nombres:nombres, apellidos:apellidos, email:email, contrasena:contrasena, estado:1}, function(error, result, fields){
+    
+        conexion.query(`INSERT INTO rol SET ?`, {nombre_rol:nombre, fecha:fecha, estado:1}, function(error, result, fields){
             if(error){
                 console.log(error);
             }else{
              
-                res.redirect('/usuarios');
+                res.redirect('/rol');
             }     
             });
       
@@ -131,8 +106,6 @@ Router.get('/update/:id', (req, res)=>{
     Router.get('/update', (req, res)=>{
         
              
-      
-
                 res.status(200).render('../View/Actualizar-Usuario')
     
             

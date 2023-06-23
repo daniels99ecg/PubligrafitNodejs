@@ -39,6 +39,7 @@
 <br>
 <br>
 <a class="btn btn-primary ml-4" href="create" role="button">Nuevo Registro</a>
+<a class="btn btn-primary ml-4" href="reporte" role="button">Reporte</a>
 <br>
 <br>
     <table class="table table-hover ml-3">
@@ -55,9 +56,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
+          
              {{#each title}}
-                <tr>
+                <tr id="lista">
                     <td>{{id_usuario}}</td>
                     <td>{{nombres}}</td>
                     <td>{{apellidos}}</td>
@@ -67,7 +68,7 @@
                     
                 
            
-            <td><input type="checkbox" name=""></td>
+            <td><input type="checkbox" name="estado" id="estado" onclick="estado()" checked></td>
             <td>
               <a href="/usuarios/update/{{id_usuario}}"> <button type="button" class="btn btn-outline-secondary">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">

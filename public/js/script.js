@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     var ctx = document.getElementById('myChart');
-
+  
     if (ctx) {
       var myCanvas = ctx.getContext('2d');
       var myChart = new Chart(myCanvas, {

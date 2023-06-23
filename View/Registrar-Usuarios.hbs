@@ -84,11 +84,14 @@
      </div>
      </div>
 
-    
      <div class="roles row">
       <select  id="" class="roles2" name="fk_rol2">
-        <option value="1">Administrador</option>
-        <option value="2">Empleado</option>
+        
+      {{#each title}}
+        <option value="{{id_rol}}">{{nombre_rol}}</option>
+        
+        {{/each}}
+
       </select>
       
      </div>
@@ -97,7 +100,7 @@
    
 
       <button  type="button" class="btn btn-primary mr-5" onclick="validart()" >Registrar</button>
-      <button type="button" class="btn btn-danger ">Cancelar</button>
+      <a href="/usuarios"><button type="button" class="btn btn-danger ">Cancelar</button></a>
      </div>
     
  </div>

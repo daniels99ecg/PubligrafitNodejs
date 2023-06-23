@@ -1,6 +1,40 @@
 // Validar Usuarios Daniel
 
 
+
+
+function estado(){
+  
+
+  const validar=document.getElementById('estado');
+  
+  if(validar.checked){
+    localStorage.setItem('estado', true);
+    if(localStorage.getItem('estado')==='true'){
+      document.getElementById('lista').style.color='black';
+    
+    }
+    }else{
+      localStorage.setItem('estado', false);
+
+      if( localStorage.getItem('estado')==='false'){
+        document.getElementById('lista').style.color='#878787';
+      
+      }
+      
+      
+      
+      
+      
+  }
+   // Almacenar el título modificado en el almacenamiento local
+   
+}
+ 
+
+
+
+
 function validart(){
 
     
