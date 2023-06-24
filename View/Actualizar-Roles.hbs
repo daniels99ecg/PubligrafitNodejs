@@ -12,7 +12,7 @@
 
   <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon">
   <!-- Custom styles -->
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 
   
 
@@ -39,7 +39,8 @@
   <div class="card" style="width: 64%;">
 
     <div class="card-body">
-   <form action="" method="get">
+      {{#each title}}
+   <form action="/rol/update/in/" method="POST">
     <div class="text-center">
     <img class="img-fluid ml-5" src="https://cdn-icons-png.flaticon.com/512/359/359858.png" alt="">
   </div>
@@ -47,133 +48,39 @@
     <div class="form-row">
 
       <div class="col-xs-4">
+        <input type="text" value="{{id_rol_x_permiso}}" name="id" style="display: none;"> 
         <label for="inputEmail4" class="form-label" >Nombre(*)</label>
-        <input type="text" class="form-control" placeholder="Nombre" aria-label="First name" id="dni">
+        <input type="text" class="form-control" value="{{fk_rol}}" placeholder="Nombre" aria-label="First name" id="dni">
       </div>
 
       <div class="col-xs-4">
-        <label for="inputEmail4" class="form-label">Descripcion(*)</label>
-        <input type="text" class="form-control" placeholder="Descripcion" aria-label="Last name" id="nombre">
+        <label for="inputEmail4" class="form-label">Permiso(*)</label>
+        <input type="text" class="form-control" value="{{fk_permiso}}" placeholder="Descripcion" aria-label="Last name" id="nombre">
       </div>
-
+{{!-- 
       <div class="col-xs-4">
         <label for="inputEmail4" class="form-label">Fecha(*)</label>
         <input type="date" class="form-control" placeholder="Fecha" aria-label="Last name" id="nombre">
-      </div>
+      </div> --}}
       
     
     </div>
 <br>
 <br>
-    <div  class="form-row">
-
-      <div class="col-xs-4">
-        <input type="checkbox" class="form-control" placeholder="Fecha" aria-label="Last name" id="nombre" style="margin-top: 10px;">
-      </div>
-      <label for="inputEmail4" class="form-label">Registrar Usuario</label>
-
-      <div class="col-xs-4">
-        <input type="checkbox" class="form-control" placeholder="Fecha" aria-label="Last name" id="nombre" style="margin-top: 10px;">
-      </div>
-      <label for="inputEmail4" class="form-label">Registrar Producto</label>
-
-
-      <div class="col-xs-4">
-        <input type="checkbox" class="form-control" placeholder="Fecha" aria-label="Last name" id="nombre" style="margin-top: 10px;">
-      </div>
-      <label for="inputEmail4" class="form-label">Registrar Insumos</label>
-
-    </div>
-
-  <div class="form-row">
-  <div class="col-xs-4">
-    <input type="checkbox" class="form-control" placeholder="Fecha" aria-label="Last name" id="nombre" style="margin-top: 10px;">
-  </div>
-  <label for="inputEmail4" class="form-label">Editar Usuario</label>
-
-
-  <div class="col-xs-4">
-    <input type="checkbox" class="form-control" placeholder="Fecha" aria-label="Last name" id="nombre" style="margin-top: 10px;">
-  </div>
-  <label for="inputEmail4" class="form-label">Editar Producto</label>
-
-
-  <div class="col-xs-4">
-    <input type="checkbox" class="form-control" placeholder="Fecha" aria-label="Last name" id="nombre" style="margin-top: 10px;">
-  </div>
-  <label for="inputEmail4" class="form-label">Editar Insumos</label>
-  </div>
-  
-
     
-  <div class="form-row">
-    <div class="col-xs-4">
-      <input type="checkbox" class="form-control" placeholder="Fecha" aria-label="Last name" id="nombre" style="margin-top: 10px;">
-    </div>
-    <label for="inputEmail4" class="form-label">Eliminar Usuario</label>
-
-
-    <div class="col-xs-4">
-      <input type="checkbox" class="form-control" placeholder="Fecha" aria-label="Last name" id="nombre" style="margin-top: 10px;">
-    </div>
-    <label for="inputEmail4" class="form-label">Elimianar Producto</label>
-
-
-    <div class="col-xs-4">
-      <input type="checkbox" class="form-control" placeholder="Fecha" aria-label="Last name" id="nombre" style="margin-top: 10px;">
-    </div>
-    <label for="inputEmail4" class="form-label">Eliminar Insumos</label>
-    </div>  
-
-
-    <div class="form-row">
-      <div class="col-xs-4">
-        <input type="checkbox" class="form-control" placeholder="Fecha" aria-label="Last name" id="nombre" style="margin-top: 10px;">
-      </div>
-      <label for="inputEmail4" class="form-label">Registrar Ventas</label>
-      </div>
-
-
-
-      <div class="form-row">
-        <div class="col-xs-4">
-          <input type="checkbox" class="form-control" placeholder="Fecha" aria-label="Last name" id="nombre" style="margin-top: 10px;">
-        </div>
-        <label for="inputEmail4" class="form-label">Editar Ventas</label>
-        </div>
-
-
-        <div class="form-row">
-          <div class="col-xs-4">
-            <input type="checkbox" class="form-control" placeholder="Fecha" aria-label="Last name" id="nombre" style="margin-top: 10px;">
-          </div>
-          <label for="inputEmail4" class="form-label">Eliminar ventas</label>
-          </div>
-
 
 
     <div class="col-12 row mr-5">
       <button type="button" class="btn btn-primary mr-5" onclick="validart()">Actualizar</button>
-      <button type="button" class="btn btn-danger ">Cancelar</button>
+      <a href="/rol"><button type="button" class="btn btn-danger ">Cancelar</button></a>
     </div>
   </form>
+  {{/each}}
 </div>
   </div>
 
     <!-- ! Footer -->
-    <footer class="footer">
-  <div class="container footer--flex">
-    <div class="footer-start">
-      <p>2021 © Elegant Dashboard - <a href="elegant-dashboard.com" target="_blank"
-          rel="noopener noreferrer">elegant-dashboard.com</a></p>
-    </div>
-    <ul class="footer-end">
-      <li><a href="##">About</a></li>
-      <li><a href="##">Support</a></li>
-      <li><a href="##">Puchase</a></li>
-    </ul>
-  </div>
-</footer>
+    
   </div>
 </div>
 <!-- Chart library -->

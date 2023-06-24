@@ -52,12 +52,12 @@ Router.post('/save', async (req, res)=>{
 Router.get('/eliminar/:id', (req, res)=>{
 const id= parseInt(req.params.id);
 
-    conexion.query(`DELETE FROM usuario WHERE id_usuario='${id}'` , function(error, result, fields){
+    conexion.query(`DELETE FROM rol_x_permiso WHERE id_rol_x_permiso='${id}'` , function(error, result, fields){
         if(error){
             console.log(error)
             
         }else{
-            res.redirect('/usuarios');
+            res.redirect('/rol');
 
         }     
         });
@@ -69,11 +69,11 @@ const id= parseInt(req.params.id);
 Router.get('/update/:id', (req, res)=>{
     const id= parseInt(req.params.id);
     
-    conexion.query(`SELECT id_usuario, nombres, apellidos, email, contrasena, estado FROM usuario WHERE id_usuario='${id}'` , function(error, result, fields){
+    conexion.query(`SELECT id_rol_x_permiso, fk_rol, fk_permiso FROM rol_x_permiso WHERE  id_rol_x_permiso='${id}'` , function(error, result, fields){
         if(error){
             throw error;
         }else{
-            res.status(200).render('../View/Actualizar-Usuario', {title:result})
+            res.status(200).render('../View/Actualizar-Roles', {title:result})
 
         }     
         });
@@ -110,6 +110,38 @@ Router.get('/update/:id', (req, res)=>{
     
             
           
+        })
+
+
+        Router.get('/asignar', (req, res)=>{
+
+            conexion.query('SELECT id_rol, nombre_rol FROM  rol  WHERE 1', function(error, result, fields){
+                if(error){
+                    throw error;
+                }else{
+                    res.status(200).render('../View/Asignar-Roles', {title:result})
+        
+                }     
+                });
+          
+        })
+        
+        Router.post('/asignar/save', async (req, res)=>{
+
+
+            const rol=req.body.rol;
+            const permiso=req.body.permiso;
+            
+            
+                conexion.query(`INSERT INTO rol_x_permiso SET ?`, {fk_rol:rol, fk_permiso:permiso}, function(error, result, fields){
+                    if(error){
+                        console.log(error);
+                    }else{
+                     
+                        res.redirect('/rol/asignar');
+                    }     
+                    });
+              
         })
     
 module.exports=Router;

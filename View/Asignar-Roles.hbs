@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P-G Registrar Usuarios</title>
+  <!-- Favicon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  
+
+</head>
+
+<body>
+  <div class="layer"></div>
+<!-- ! Body -->
+<a class="skip-link sr-only" href="#skip-target">Skip to content</a>
+<div class="page-flex">
+
+  <!-- ! Sidebar -->
+  <aside class="sidebar" id="header">
+    {{>header}}
+</aside>
+
+  <div class="main-wrapper">
+    <!-- ! Main nav -->
+    <nav class="main-nav--bg">
+      <script src="./validar/nav.js"></script>
+    </nav>
+
+   <script src="validar/validar.js"></script>
+  <div class="card">
+   
+    <div class="card-body">
+   <form action="/rol/asignar/save" method="POST">
+    <select name="rol" id="">
+        {{#each title}}
+        <option value="{{id_rol}}">{{nombre_rol}}</option>
+        
+        {{/each}}
+    </select>
+    <br>
+    <br>
+
+    <select name="permiso" id="">
+      
+        <option value="0001RUS">Registrar Usuario</option>
+        <option value="0002LUS">Listar Usuario</option>
+
+<option value="0003CUS">	Consultar Usuario</option>
+<option value="0004AUS">Actualizar Usuario</option>
+<option value="0005IUS">Inhabilitar Usuario</option>
+<option value="0006RCS">Recuperar Contrasena</option>
+<option value="0007CRROL">Crear Roles</option>
+<option value="0008LROL">Listar Roles</option>
+<option value="0009CROL">Consultar Roles</option>
+<option value="0010AROL">Actualizar Roles</option>
+<option value="0011IROL">Inhabilitar Roles</option>
+<option value="0012RINS">Registrar Insumos</option>
+<option value="0013LINS">Listar Insumos</option>
+<option value="0014CINS">Consultar Insumos</option>
+<option value="0015AINS">Actualizar Insumos</option>
+<option value="0016IINS">Inhabilitar Insumos</option>
+<option value="0017RFT">Registrar Ficha Técnica</option>
+<option value="0018LFT">Listar Ficha Técnica</option>
+<option value="0019CFT">Consultar Ficha Técnica</option>
+<option value="0020AFT">Actualizar Ficha Técnica</option>
+<option value="0021IFT">Inhabilitar Ficha Técnica</option>
+<option value="0022RCOM">Registrar Compras</option>
+<option value="0023LCOM">Listar Compras</option>
+<option value="0024CCOM">Consultar Compras</option>
+<option value="0025ACOM">Actualizar Compras</option>
+<option value="0026ICOM">Inhabilitar Compras</option>
+<option value="0027RPRO">Registrar Productos</option>
+<option value="0028LPRO">Listar Productos</option>
+<option value="0029CPRO">Consultar Productos</option>
+<option value="0030APRO">Actualizar Productos</option>
+<option value="0031IPRO">Inhabilitar Productos</option>
+<option value="0032RCL">Registrar Clientes</option>
+<option value="0033LCL">Listar Clientes</option>
+<option value="0034CCL">Consultar Clientes</option>
+<option value="0035ACL">Actualizar Clientes</option>
+<option value="0036ICL">Inhabilitar Clientes</option>
+<option value="0037RVE">Registrar Ventas</option>
+<option value="0038LVE">Listar Ventas</option>
+<option value="0039CVE">Consultar Ventas</option>
+<option value="0040AVE">Actualizar Ventas</option>
+<option value="0041IVE">Inhabilitar Ventas</option>
+
+
+        
+        
+    </select>
+    </div>
+<br>
+<br>
+
+
+    <div class="col-12 row mr-5">
+      <button type="submit" class="btn btn-primary mr-5" onclick="validart()">Registrar</button>
+      <button type="button" class="btn btn-danger ">Cancelar</button>
+    </div>
+  </form>
+</div>
+  </div>
+
+    <!-- ! Footer -->
+    {{!-- <footer class="footer">
+  <div class="container footer--flex">
+    <div class="footer-start">
+      <p>2021 © Elegant Dashboard - <a href="elegant-dashboard.com" target="_blank"
+          rel="noopener noreferrer">elegant-dashboard.com</a></p>
+    </div>
+    <ul class="footer-end">
+      <li><a href="##">About</a></li>
+      <li><a href="##">Support</a></li>
+      <li><a href="##">Puchase</a></li>
+    </ul>
+  </div>
+</footer> --}}
+  </div>
+</div>
+<!-- Chart library -->
+<script src="./plugins/chart.min.js"></script>
+<!-- Icons library -->
+<script src="plugins/feather.min.js"></script>
+<!-- Custom scripts -->
+<script src="js/script.js"></script>
+</body>
+
+</html>

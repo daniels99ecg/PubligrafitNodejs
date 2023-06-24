@@ -1,6 +1,9 @@
 // Validar Usuarios Daniel
 
-
+//Ventana
+function ventana(){
+  window.open('asignar', 'Roles', 'left=400,top=150,width=800,height=500')
+}
 
 //Pruebas de estado
 function estado(){
@@ -303,6 +306,24 @@ eliminarVenta =(id) =>{
     })
 }
 
+//Eliminar rol
+eliminarRol =(id) =>{
+    
+  Swal.fire({
+      title: 'Eliminar Registro?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+      
+        window.location='/rol/eliminar/'+id;
+      }
+    })
+}
 
 // Validar Clientes
 
