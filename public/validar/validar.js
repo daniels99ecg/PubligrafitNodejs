@@ -8,7 +8,6 @@ function ventana(){
 //Pruebas de estado
 function estado(){
   
-
   const validar=document.getElementById('switch-label');
   
   if(validar.checked){
@@ -23,15 +22,9 @@ function estado(){
       if( localStorage.getItem('estado')==='false'){
         document.getElementById('lista').style.color='#878787';
       
-      }
-      
-      
-      
-      
-      
+      }   
   }
-   // Almacenar el título modificado en el almacenamiento local
-   
+   // Almacenar el título modificado en el almacenamiento local  
 }
  
 
@@ -287,8 +280,8 @@ validarAdd =() =>{
     });       
 }
 
-
-eliminarVenta =(id) =>{
+//Eliminar Usuarios
+eliminarUsuario =(id) =>{
     
   Swal.fire({
       title: 'Eliminar Registro?',
@@ -321,6 +314,44 @@ eliminarRol =(id) =>{
       if (result.isConfirmed) {
       
         window.location='/rol/eliminar/'+id;
+      }
+    })
+}
+
+eliminarProducto =(id) =>{
+    
+  Swal.fire({
+      title: 'Eliminar Registro?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+      
+        window.location='/producto/eliminar/'+id;
+      }
+    })
+}
+
+
+//Eliminar Insumos
+eliminarInsumos =(id) =>{
+    
+  Swal.fire({
+      title: 'Eliminar Registro?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Aceptar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+      
+        window.location='/insumos/eliminar/'+id;
       }
     })
 }
@@ -599,6 +630,11 @@ validarInsumos =() =>{
             Buttons: true
           }).then((result) => {
             if (result.isConfirmed) {
+
+                //Linea de codigo muy importante para el cambio de type button a submit
+                const formulario=document.getElementById('pruebas1');
+                formulario.submit();
+
               swalWithBootstrapButtons.fire(
                 'Insumo Registrado!',
                 'Your file has been deleted.',
@@ -676,6 +712,10 @@ validarAInsumos =() =>{
             Buttons: true
           }).then((result) => {
             if (result.isConfirmed) {
+              //Linea de codigo muy importante para el cambio de type button a submit
+              const formulario=document.getElementById('pruebas1');
+              formulario.submit();
+
               swalWithBootstrapButtons.fire(
                 'Insumo Actualizado!',
                 'Your file has been deleted.',
@@ -757,6 +797,10 @@ validarProducto =() =>{
             reverseButtons: true
           }).then((result) => {
             if (result.isConfirmed) {
+
+              const formulario=document.getElementById('producto');
+              formulario.submit();
+
               swalWithBootstrapButtons.fire(
                 'Registro Enviado!',
                 'Your file has been deleted.',
@@ -781,7 +825,7 @@ validarFicha =() =>{
      
     let producto= document.getElementById("producto").value;
     let detalle= document.getElementById("detalle").value;
-    let cantidad1 = document.getElementById("cantidad1").value;
+    let cantidad1 = document.getElementById("cantidad_insumo").value;
     cantidad1=parseInt(cantidad1);
     let cantidad = document.getElementById("cantidad").value;
     cantidad=parseInt(cantidad);
@@ -843,6 +887,12 @@ validarFicha =() =>{
             Buttons: true
           }).then((result) => {
             if (result.isConfirmed) {
+
+                //Linea de codigo muy importante para el cambio de type button a submit
+                const formulario=document.getElementById('ficha_tecnica');
+                formulario.submit();
+
+
               swalWithBootstrapButtons.fire(
                 'Registro Enviado!',
                 'Your file has been deleted.',
