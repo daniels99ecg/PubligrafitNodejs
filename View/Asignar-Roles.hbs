@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>P-G Registrar Usuarios</title>
+  <title>P-G Asignar Roles</title>
   <!-- Favicon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
-  <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon">
+<link rel="shortcut icon" href="../img/PubliGrafit2.png" type="image/x-icon">
   <!-- Custom styles -->
   <link rel="stylesheet" href="./css/style.css">
 
@@ -39,6 +39,7 @@
   <div class="card">
    
     <div class="card-body">
+      <div style="margin-left:30%;">
    <form action="/rol/asignar/save" method="POST">
     <select name="rol" id="">
         {{#each title}}
@@ -98,6 +99,25 @@
         
         
     </select>
+
+
+<br>
+<br>
+    {{!-- <select name="permiso" id="">
+      
+     
+<option value="0007CRROL">Crear Roles</option>
+<option value="0008LROL">Listar Roles</option>
+<option value="0009CROL">Consultar Roles</option>
+<option value="0010AROL">Actualizar Roles</option>
+<option value="0011IROL">Inhabilitar Roles</option>
+
+
+
+        
+        
+    </select> --}}
+    </div>
     </div>
 <br>
 <br>
@@ -128,11 +148,11 @@
   </div>
 </div>
 <!-- Chart library -->
-<script src="./plugins/chart.min.js"></script>
+<script src="../plugins/chart.min.js"></script>
 <!-- Icons library -->
-<script src="plugins/feather.min.js"></script>
+<script src="../plugins/feather.min.js"></script>
 <!-- Custom scripts -->
-<script src="js/script.js"></script>
+<script src="../js/script.js"></script>
 </body>
 
 </html>

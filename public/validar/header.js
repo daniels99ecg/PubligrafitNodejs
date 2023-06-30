@@ -3,7 +3,7 @@ const header= document.querySelector("aside");
 header.innerHTML=`
 <div class="sidebar-start">
         <div class="sidebar-head">
-            <a href="dashboard.html" class="logo-wrapper" title="Home">
+            <a href="dashboard" class="logo-wrapper" title="Home">
                 <span class="sr-only">Home</span>
                 <span class="icon logo" aria-hidden="true" style="margin-left: -7.5px;"></span>
                 <div class="logo-text">
@@ -20,7 +20,7 @@ header.innerHTML=`
         <div class="sidebar-body">
             <ul class="sidebar-body-menu">
                 <li>
-                <a  href="dashboard.html">
+                <a  href="dashboard">
                 </span><svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" fill="currentColor" class="bi bi-laptop" viewBox="0 0 16 16" style="margin-left: -8.5px;">
                 <path d="M13.5 3a.5.5 0 0 1 .5.5V11H2V3.5a.5.5 0 0 1 .5-.5h11zm-11-1A1.5 1.5 0 0 0 1 3.5V12h14V3.5A1.5 1.5 0 0 0 13.5 2h-11zM0 12.5h16a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5z"/>
               </svg></span>Dashboard</a>

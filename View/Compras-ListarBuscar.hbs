@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P-G Listar Compras</title>
+  <!-- Favicon -->
+<link rel="shortcut icon" href="../img/PubliGrafit2.png" type="image/x-icon">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+<script src="../validar/validarC.js"></script>
+  
+
+</head>
+
+<body>
+  <div class="layer"></div>
+<!-- ! Body -->
+<a class="skip-link sr-only" href="#skip-target">Skip to content</a>
+<div class="page-flex">
+  <!-- ! Sidebar -->
+  <aside class="sidebar" id="header">
+    {{>header}}
+</aside>
+  <div class="main-wrapper">
+    <!-- ! Main nav -->
+    <nav class="main-nav--bg">
+      <script src="./validar/nav.js"></script>
+    </nav>
+    <!-- ! Main -->
+   
+<br>
+<br>
+<br>
+<div style="margin-left: 60%;">
+<form action="/compras/buscar/{{title.id_compra}}" method="post">
+<div class="input-group">
+
+       <input type="text" placeholder="Buscar Id" name="id" style="border-radius:5px; border:none;">
+      <input type="submit" class="btn btn-primary" value="Buscar">
+   
+      </div>
+  <br>
+</form>
+</div>
+
+<a class="btn btn-primary ml-4" href="/compras/create" role="button">Nuevo Registro</a>
+
+<br>
+<br>
+
+  
+<br>
+<br>
+    <table class="table table-hover ml-3">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Fecha de compra</th>
+            <th scope="col">Total</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Detalle</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {{#each title}}
+            <tr id="lista">
+            <td>{{id_compra}}</td>
+            <td>{{fecha}}</td>
+            <td>{{total}}</td>
+            {{!<td><input type="checkbox" name=""></td>}}
+            <td><div class="switch-button">
+              <input type="checkbox" name="switch-button" id="switch-label" onclick="estado()" checked class="switch-button__checkbox" >
+              <label for="switch-label" class="switch-button__label"></label>
+          </div></td>
+          <td><a class="btn btn-primary ml-4" onclick="detalle3({{id_compra}})" role="button"  data-bs-toggle="modal" data-bs-target="#exampleModal"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg></td></a>
+            
+          </tr>
+    {{/each}}
+        </tbody>
+      </table>
+  
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <script src="sweetalert2.min.js"></script>
+ <link rel="stylesheet" href="sweetalert2.min.css">
+
+  </div>
+    <!-- ! Footer -->
+    <!-- <footer class="footer">
+  <div class="container footer--flex">
+    <div class="footer-start">
+      <p>2021 © Elegant Dashboard - <a href="elegant-dashboard.com" target="_blank"
+          rel="noopener noreferrer">elegant-dashboard.com</a></p>
+    </div>
+    <ul class="footer-end">
+      <li><a href="##">About</a></li>
+      <li><a href="##">Support</a></li>
+      <li><a href="##">Puchase</a></li>
+    </ul>
+  </div>
+</footer>
+  </div>
+</div> -->
+<!-- Chart library -->
+<script src="../plugins/chart.min.js"></script>
+<!-- Icons library -->
+<script src="../plugins/feather.min.js"></script>
+<!-- Custom scripts -->
+<script src="../js/script.js"></script>
+</body>
+
+</html>

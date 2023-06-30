@@ -5,15 +5,15 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PubliGrafit</title>
+  <title>P-G Listar Roles</title>
   <!-- Favicon -->
-  <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon">
+<link rel="shortcut icon" href="../img/PubliGrafit2.png" type="image/x-icon">
   <!-- Custom styles -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <link rel="stylesheet" href="./css/style.css">
 
-  <script src="validar/validar.js"></script>
+  <script src="validar/validarU-R.js"></script>
 
 </head>
 
@@ -36,6 +36,18 @@
 <br>
 <br>
 <br>
+<div style="margin-left: 60%;">
+<form action="buscar/{{title.id_rol_x_permiso}}" method="post">
+<div class="input-group">
+
+       <input type="text" placeholder="Buscar" name="id" style="border-radius:5px; border:none;">
+      <input type="submit" class="btn btn-primary" value="Buscar">
+   
+      </div>
+  
+</form>
+</div>
+
 <a class="btn btn-primary ml-4" href="create" role="button">Nuevo Registro</a>
 <br>
 <br>
@@ -74,8 +86,6 @@
     <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"></path>
   </svg>
                   </button></a>
-
-
 
 
                   <a  onclick="eliminarRol({{id_rol_x_permiso}})">

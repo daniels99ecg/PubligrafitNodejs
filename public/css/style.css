@@ -1811,7 +1811,7 @@ button.disabled:focus {
   margin: 2%;
   display: flex;
   padding: 20px;
-  margin-left: 30%;
+  margin-left: 36%;
   
 }
 .roles2{
@@ -4373,6 +4373,7 @@ label {
   margin-left: 220px;
 }
 
+
 .table{
   margin-right: -100%;
 }
@@ -4381,18 +4382,44 @@ label {
 top: 5%;
 right: 173%;
 }
-
+/* Ventas y Clientes */
 .dato3{
   width: 20%;
   left: 40%;
-  top: 0%;
+  top: 4%;
 }
 
 .dato4{
   width: 15%;
-  left: 1.5%;
+  left: 7.5%;
   top: -3%;
 }
+.repo{
+  margin-left: 80%;
+  margin-top: -3%;
+}
+
+.report2{
+  margin-left: 80%;
+  margin-top: -3%;
+}
+
+.regis{
+  margin-left: 6%;
+}
+
+.regis2{
+  margin-left: 6%;
+}
+
+#add{
+  position: relative;
+  color: green;
+  left: 260px;
+  bottom: -5px;
+  border: transparent;
+}
+
 
 .dato5{
   position: relative;
@@ -4406,10 +4433,10 @@ right: 173%;
   right: -45px;
 }
 
-.repo{
+/* .repo{
   margin-left: 80%;
   margin-top: -4%;
-}
+} */
 
 #trbox{
   position: relative;
@@ -4460,10 +4487,21 @@ select{
   }
 
 
-  #add{
+  /* CSS COMPRAS  */
+   #add2{
     position: relative;
     color: green;
-    left: 270px;
-    bottom: -5px;
+    left: 490px;
+    bottom: 30px;
     border: transparent;
   }
+
+  .repo2{
+    margin-left: 81.6%;
+    margin-top: -3.9%;
+  }
+
+  .nr{
+    margin-left:4%;
+  }
+

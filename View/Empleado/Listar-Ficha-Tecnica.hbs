@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P-G Listar Ficha Técnica</title>
+  <!-- Favicon -->
+ <link rel="shortcut icon" href="../img/PubliGrafit2.png" type="image/x-icon">
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="./css/style.css">
+
+
+<script src="validar/validar.js"></script>
+
+</head>
+
+<body>
+  <div class="layer"></div>
+  <!-- ! Body -->
+  <a class="skip-link sr-only" href="#skip-target">Skip to content</a>
+  <div class="page-flex">
+    <!-- ! Sidebar -->
+    <aside class="sidebar" id="header">
+      {{>aside}}
+    </aside>
+    <div class="main-wrapper">
+      <!-- ! Main nav -->
+      <nav class="main-nav--bg">
+        {{>nav2}}
+      </nav>
+      <!-- ! Main -->
+
+      <br>
+      <br>
+      <br>
+    
+
+      <div class="repo">
+        <a class="btn btn-primary" href="###.html" role="button">Reporte</a>
+      </div>
+
+      <br>
+      <br>
+      <div style="width: 99%; height:600px; overflow-y:scroll; overflow-x:hidden;">
+<table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">id_ft</th>
+            <th scope="col">nombre</th>
+            <th scope="col">cantidad_insumo</th>
+            <th scope="col">costo_insumo</th>
+            <th scope="col">imagen_producto</th>
+            <th scope="col">costo_final</th>
+            <th scope="col">Detalles</th>
+           
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {{#each title}}
+              <tr id="lista">
+                    <td>{{id_ft}}</td>
+                    <td>{{nombre}}</td>
+                    <td>{{cantidad_insumo}}</td>
+                    <td>{{costo_insumo}}</td>
+                    <td>{{imagen_producto_final}}</td>
+                    <td>{{costo_final_producto}}</td>
+                    <td>{{detalle}}</td>
+                    
+            {{!-- <td>
+                <input type="checkbox" name="">
+            </td> --}}
+
+
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      </div>
+
+    </div>
+    <!-- ! Footer -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <script src="sweetalert2.min.js"></script>
+ <link rel="stylesheet" href="sweetalert2.min.css">
+  </div>
+  </div>
+  <!-- Chart library -->
+  <script src="./plugins/chart.min.js"></script>
+  <!-- Icons library -->
+  <script src="plugins/feather.min.js"></script>
+  <!-- Custom scripts -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -9,12 +9,12 @@ const contra=document.getElementById('contrasena').value;
 
 if(usuario=="danielsenju1999@gmail.com" && contra=="123"){
     console.log('ingreso')
-    window.location='../PubliGrafit/dashboard.html';
+    window.location='/dashboard';
 }
 
 else if(usuario=="camilo@gmail.com" && contra=="123456") {
     console.log('ingreso')
-    window.location='../PubliGrafit/Empleado/dashboard.html';
+    window.location='/dashboard';
 }else{
     console.log('no ingreso')
     window.location='../PubliGrafit/login.html';

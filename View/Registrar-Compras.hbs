@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>P-G Registrar Usuarios</title>
+  <title>P-G Registrar Compras</title>
   <!-- Favicon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
-  <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon">
+<link rel="shortcut icon" href="../img/PubliGrafit2.png" type="image/x-icon">
   <!-- Custom styles -->
   <link rel="stylesheet" href="./css/style.css">
 
@@ -31,17 +31,18 @@
   <div class="main-wrapper">
     <!-- ! Main nav -->
     <nav class="main-nav--bg">
-      <script src="./validar/nav.js"></script>
+     {{>nav}}
     </nav>
 
 
 
     <!-- ! Main -->
-   <script src="validar/validar.js"></script>
-  <div class="card" style="width: 70%;" >
+   <script src="validar/validarC.js"></script>
+  <div class="card" style="width: 63%;" >
 
     <div class="card-body">
-   <form action="" method="get">
+   <form action="/compras/save" method="post" id="compras">
+
     <div class="text-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
             <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
@@ -49,12 +50,14 @@
           </svg>
   </div>
     <div class="form-row">
-      <div class="col-xs-4">
+      <div class="col-xs-4" style="margin-left: 8%; width:190px">
         <label for="inputEmail4" class="form-label">Proveedor(*)</label><br>
         <select class="form-control" name="Proveedor" id="Proveedor" value="Proveedor" placeholder="Proveedor">
           <option value="">Proveedor</option>
-          <option value="Exito">Norma</option>
-          <option value="Homecenter">Homecenter</option>
+          <option value="Quiminet">Quiminet</option>
+          <option value="GranPapel">GranPapel</option>
+          <option value="CGraficass">CGraficass</option>
+          <option value="Artes Graficas">Artes Graficas</option>
           </select>
 
  
@@ -62,40 +65,92 @@
     </div>
     <div class="form-row">
 
-    <div class="col-xs-4" style="position:absolute; right: 200px; bottom: 320px;  " >
+    <div class="col-xs-4" style="margin-left: 50%; margin-top: -13%; width:190px" >
       <label for="inputEmail4" class="form-label">Fecha(*)</label>
       <input type="date" class="form-control" placeholder="Fecha" aria-label="First name" id="Fecha" name="Fecha">
     </div>
     </div> 
     
-    <div class="form-row">
-
-      <div class="col-xs-4" style=" margin-top:120px; " >
-        <label for="inputEmail4" class="form-label">Cantidad(*)</label>
-
-        <input type="number" class="form-control" name="Cantidad" placeholder="Cantidad" aria-label="First name" id="Cantidad">
-      </div>
-    </div>
+    
 
     <div class="form-row">
-      <div class="col-xs-4" style="margin-left:350px; margin-top:-70px;" >
+      <div class="col-xs-4" style="margin-left:160px; margin-top:20px; width:190px" >
         <label for="inputEmail4" class="form-label">Total(*)</label>
 
-        <input type="number" class="form-control" placeholder="Total" aria-label="First name" id="Total" name="Total" disabled>
+        <input type="number" class="form-control" placeholder="Total" aria-label="First name" id="Total" name="Total" >
       </div>    
     </div>
+    
+<script>
+  function calcularSubtotal(row) {
+    var cantidad = parseFloat(row.cells[1].getElementsByTagName("input")[0].value);
+    var precio = parseFloat(row.cells[2].getElementsByTagName("input")[0].value);
+    var ivaSelect = parseFloat(row.cells[3].getElementsByTagName("select")[0].value);
+  
+    var subtotal = cantidad * precio;
+    var total = subtotal + (subtotal * ivaSelect);
+    
+    //row.cells[4].innerHTML = subtotal.toFixed(2);
+    document.getElementById("Total").value = total.toFixed(2);
+    document.getElementById("subtotal").value = subtotal.toFixed(2);
+  }
+  
+  function operacion() {
+    var tabla = document.getElementById("tablas");
+    var rows = tabla.getElementsByTagName("tr");
+    
+    for (var i = 0; i < rows.length; i++) {
+      calcularSubtotal(rows[i]);
+    }
+  }
+  </script>
 
-      <div class="col-xs-4">
-        <button><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-          </svg></button>
 
+      <div>
+      <button type="button" id="add2" onclick="validarAdd()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+      </svg></button>
       </div>
 
     </div>
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Insumo</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Iva</th>
+        <th scope="col">SubTotal</th>
+      </tr>
+    </thead>
+    <tbody id="tablas">
+      <tr>
+        <td><select name="Insumo" id="Insumo" style="width: 120px;">
+          {{#each title}}
+          <option value="{{id_insumo}}">{{nombre}}</option>
+          {{/each}}
+        </select></td>
+        <td><input name="Cantidad" id="Cantidad" type="number" placeholder="Cantidad" style="width: 90px;" onchange="calcularSubtotal(this.parentNode.parentNode)">
+        </input></td>
+        <td><input id="Precio" name="Precio" type="number" placeholder="Precio" style="width: 90px;" onchange="calcularSubtotal(this.parentNode.parentNode)"></td>
+        <td><select name="iva" id="ivaSelect" onchange="calcularSubtotal(this.parentNode.parentNode)">
+          <option value=""></option>
+          <option value="0.19">19%</option>
+          <option value="0.16">16%</option>
+          <option value="0.14">14%</option>
+        </select></td>
+        <td id="resultado"><input type="text" name="subtotal" id="subtotal" style="width:70%"></td>
+
+        </td>
+
+      </tr>
+
+    </tbody>
+  </table>
+
     <div class="col-12 row mr-5">
-      <button type="button" class="btn btn-primary mr-5" onclick="validarCompra()">Registrar</button>
+      <button type="button" onclick="validarCompra()" class="btn btn-primary mr-5">Registrar</button>
       <button type="button" class="btn btn-danger ">Cancelar</button>
     </div>
   </form>

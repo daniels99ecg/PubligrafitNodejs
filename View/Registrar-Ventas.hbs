@@ -5,16 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>P-G Registrar Usuarios</title>
+  <title>P-G Registrar Ventas</title>
   <!-- Favicon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
-  <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon">
+<link rel="shortcut icon" href="../img/PubliGrafit2.png" type="image/x-icon">
   <!-- Custom styles -->
-  <link rel="stylesheet" href="./css/style.css">
-
-  
+  <link rel="stylesheet" href="./css/style.css">  
 
 </head>
 
@@ -32,14 +30,14 @@
   <div class="main-wrapper">
     <!-- ! Main nav -->
     <nav class="main-nav--bg">
-      <script src="./validar/nav.js"></script>
+   {{>nav}}
     </nav>
    
-   <script src="validar/validar.js"></script>
-  <div class="card" style="width: 70%;">
+   <script src="validar/validarVC.js"></script>
+  <div class="card" style="width: 64%;">
 
     <div class="card-body">
-   <form action="" method="post">
+   <form action="/ventas/save" method="POST" id="formularioVentas">
     <div class="text-center">
         <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-bag-check" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -47,27 +45,27 @@
           </svg>
   </div>
     <div class="form-row">
-      <div class="col-3" style="margin-left: 70px;">
+      <div class="col-3" style="margin-left: 7%;">
         <label for="inputEmail4" class="form-label">DNI Cliente(*)</label>
 
         <input type="text" class="form-control" placeholder="No. Documento" name="cliente" id="cliente">
       </div>
 
       <div class="form-row">
-      <div class="col-xs-4" style="margin-left: px;">
+      <div class="col-xs-4" style="margin-left: 1%;">
         <label for="inputEmail4" class="form-label">Tipo Comprobante(*)</label>
 
         <select type="select" class="form-control" placeholder="Tipo Comprobante" name="comprobante" id="comprobante">
           <option value="ninguno">Ninguno</option>
-          <option value="ninguno">Factura</option>
-          <option value="ninguno">Electrónico</option>
+          <option value="Factura">Factura</option>
+          <option value="Electronico">Electrónico</option>
       </select>
       </div>
 
     </div>
 
     <div class="row">
-      <div class="col-5"  style="margin-left: -55px;">
+      <div class="col-5"  style="margin-left: -18%;">
         <label for="inputEmail4" class="form-label">Fecha</label>
 
         <input type="date" class="form-control" placeholder="Fecha" name="fecha" id="fecha">
@@ -82,43 +80,68 @@
 </div>
 
       
-      <div class="col-4" style="margin-left: 68px;">
+      <div id="total" class="col-4" style="margin-left: 7%;">
         <label for="inputEmail4" class="form-label">Total(*)</label>
 
-        <input type="text" class="form-control" placeholder="Total" name="total" id="total" disabled value="12000">
+        <input type="text" name="total" class="form-control" placeholder="Total" id="totalInput">
             </div>      
     </div>
 
+ 
+
 </div>
   </div>
-
+<script>
+  function calcularSubtotal(row) {
+    var cantidad = parseFloat(row.cells[1].getElementsByTagName("input")[0].value);
+    var precio = parseFloat(row.cells[2].getElementsByTagName("input")[0].value);
+    var ivaSelect = parseFloat(row.cells[3].getElementsByTagName("select")[0].value);
+  
+    var subtotal = cantidad * precio;
+    var total = subtotal + (subtotal * ivaSelect);
+    
+    //row.cells[4].innerHTML = subtotal.toFixed(2);
+    document.getElementById("totalInput").value = total.toFixed(2);
+    document.getElementById("subtotal").value = subtotal.toFixed(2);
+  }
+  
+  function operacion() {
+    var tabla = document.getElementById("tablas");
+    var rows = tabla.getElementsByTagName("tr");
+    
+    for (var i = 0; i < rows.length; i++) {
+      calcularSubtotal(rows[i]);
+    }
+  }
+  </script>
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">ID</th>
         <th scope="col">Producto</th>
         <th scope="col">Cantidad</th>
+        <th scope="col">Precio</th>
         <th scope="col" name="iva" id="iva">IVA</th>
         <th scope="col">Subtotal</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id="tablas">
       <tr>
-        <th scope="row">0001</th>
         <td><select name="producto" id="producto">
-          <option value=""></option>
-          <option value="">Cuadernos</option>
-          <option value="">Pendones</option>
-          <option value="">Talonarios</option>
+          {{#each title}}
+          <option value="{{id_producto}}">{{nombre_producto}}</option>
+          {{/each}}
+
         </select></td>
-        <td><input id="cantidad" name="cantidad" type="number" style="width: 70px;"></td>
-        <td><select name="iva" id="iva">
+        <td><input id="cantidad" name="cantidad" type="number" style="width: 50%;" onchange="calcularSubtotal(this.parentNode.parentNode)"></td>
+        <td><input type="text" id="precio" name="precio" style="width: 70%;" onchange="calcularSubtotal(this.parentNode.parentNode)"></td>
+        
+        <td><select name="iva" id="ivaSelect" onchange="calcularSubtotal(this.parentNode.parentNode)">
           <option value=""></option>
-          <option value="">19%</option>
-          <option value="">16%</option>
-          <option value="">14%</option>
+          <option value="0.19">19%</option>
+          <option value="0.16">16%</option>
+          <option value="0.14">14%</option>
         </select></td>
-        <td>208.800</td>
+        <td id="resultado" name="subtotal"><input type="text" name="subtotal" id="subtotal" style="width:70%"></td>
         </td>
       </tr>
 
@@ -126,9 +149,9 @@
   </table>
    
 
-  <div class="col-12 row mr-2" style="margin-left: 320px;">
+  <div class="col-12 row mr-2" style="margin-left: 32%;">
     <button type="button" class="btn btn-primary mr-5" onclick="validarVenta()" >Registrar</button>
-    <a href="Listar-Ventas.html"><button type="button" class="btn btn-danger ">Cancelar</button></a>
+    <a href="/ventas"><button type="button" class="btn btn-danger ">Cancelar</button></a>
   </div>
 
 </form>
