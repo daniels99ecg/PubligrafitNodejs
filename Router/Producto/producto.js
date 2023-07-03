@@ -64,13 +64,14 @@ Router.get('/', (req, res)=>{
 
 Router.get('/create', (req, res)=>{
     //validacion 
+    conexion.query('SELECT id_categoria, categoria FROM categoria' , function(error, result, fields){
+        if(error){
+            throw error;
+        }else{
+            res.status(200).render('../View/Registrar-Productos', {title:result});
 
-
-   
-
-
-    res.status(200).render('../View/Registrar-Productos');
-
+        }     
+        });
   
 })
 

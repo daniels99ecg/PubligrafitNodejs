@@ -45,7 +45,7 @@
 
             <div class="form-group" style="width: 250px;">
               <label for="exampleInputPassword1">Nombre del Producto(*)</label>
-              <input type="text" class="form-control" id="producto" placeholder="producto" name="producto">
+              <input type="text" class="form-control" id="producto" placeholder="Producto" name="producto">
             </div>
 
             <div  style="position: absolute; left: 45%; top:40%;" >
@@ -59,11 +59,11 @@
 
             <div class="form-group" style="width: 250px;">
                 <label for="exampleInputPassword1">Precio(*)</label>
-                <input type="number" class="form-control" id="precio" placeholder="precio" name="precio">
+                <input type="number" class="form-control" id="precio" placeholder="Precio" name="precio">
               </div>
               <div class="form-group" style="width: 250px;">
                 <label for="exampleInputPassword1">Cantidad(*)</label>
-                <input type="number" class="form-control" id="cantidad" placeholder=" cantidad" name="cantidad">
+                <input type="number" class="form-control" id="cantidad" placeholder="Cantidad" name="cantidad">
               </div>
 
               <div class="form-group" style="width: 250px;">
@@ -76,10 +76,9 @@
             
             <br><br>
             <select name="categoria" id="categoria" >
-                <option value="1">Publicidad</option>
-                <option value="2">Papeleria</option>
-                <option value="3">Papeleria</option>
-                <option value="4">Documentos</option>
+              {{#each title}}
+                <option value="{{id_categoria}}">{{categoria}}</option>
+                {{/each}}
             </select>
 
 
