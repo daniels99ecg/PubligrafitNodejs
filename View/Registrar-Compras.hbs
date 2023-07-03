@@ -131,7 +131,8 @@
           <option value="{{id_insumo}}">{{nombre}}</option>
           {{/each}}
         </select></td>
-        <td><input name="Cantidad" id="Cantidad" type="number" placeholder="Cantidad" style="width: 90px;" onchange="calcularSubtotal(this.parentNode.parentNode)">
+        
+        <td><input name="Cantidad" id="Cantidad"  type="number" placeholder="Cantidad" style="width: 90px;" onchange="calcularSubtotal(this.parentNode.parentNode)">
         </input></td>
         <td><input id="Precio" name="Precio" type="number" placeholder="Precio" style="width: 90px;" onchange="calcularSubtotal(this.parentNode.parentNode)"></td>
         <td><select name="iva" id="ivaSelect" onchange="calcularSubtotal(this.parentNode.parentNode)">

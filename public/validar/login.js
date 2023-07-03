@@ -5,20 +5,30 @@ function ingreso(){
 const usuario=document.getElementById('correo').value;
 const contra=document.getElementById('contrasena').value;
 
+if( usuario=="" || contra==""){
+
+    Swal.fire({
+        icon: 'error',
+        title: 'Campos Vacios',
+        text: 'Por favor ingresar datos!',
+        
+      })
 
 
-if(usuario=="danielsenju1999@gmail.com" && contra=="123"){
-    console.log('ingreso')
-    window.location='/dashboard';
-}
-
-else if(usuario=="camilo@gmail.com" && contra=="123456") {
-    console.log('ingreso')
-    window.location='/dashboard';
+  
+}else if(!usuario.includes("@") || !usuario.includes(".com")){
+    Swal.fire({
+        icon: 'error',
+        title: 'Correo no valido',
+        text: 'Por favor ingresar un correo valido!',
+        
+      })
 }else{
-    console.log('no ingreso')
-    window.location='../PubliGrafit/login.html';
+          //Linea de codigo muy importante para el cambio de type button a submit
+          const formulario=document.getElementById('pruebas');
+          formulario.submit();
 
+    
+    }
 }
 
-}
