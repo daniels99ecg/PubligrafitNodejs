@@ -7,6 +7,44 @@ const Swal =require('sweetalert2');
 Router.use(express.static('public'));
 Router.use(express.static(path.join(__dirname, 'public')));
 
+Router.post('/buscar/', (req, res) => {
+    const id = req.body.id;
+    conexion.query(`SELECT ft.id_ft,i.nombre,ft.cantidad_insumo,ft.costo_insumo,ft.imagen_producto_final,ft.costo_final_producto, ft.detalle FROM ficha_tecnica ft, insumos i WHERE ft.fk_insumo=i.id_insumo and id_ft='${id}'`, function(error, result, fields) {
+    if (error) {
+        throw error
+    } else {
+        res.status(200).render('../View/FichaTecnica-Buscar', { title: result });
+    }
+    });
+    
+});
+
+Router.post('/buscar/', (req, res) => {
+    const id = req.body.id;
+    conexion.query(`SELECT pro.id_producto,pro.nombre_producto, pro.precio ,pro.imagen, pro.cantidad_producto, pro.stock, cate.categoria FROM producto pro, categoria cate WHERE pro.fk_Categoria=cate.id_Categoria and id_producto='${id}'`, function(error, result, fields) {
+    if (error) {
+        throw error
+    } else {
+        res.status(200).render('../View/Productos-buscar', { title: result });
+    }
+    });
+    
+});
+
+Router.get('/reporte', (req, res)=>{
+
+    conexion.query(`SELECT ft.id_ft,i.nombre,ft.cantidad_insumo,ft.costo_insumo,ft.imagen_producto_final,ft.costo_final_producto, ft.detalle FROM ficha_tecnica ft, insumos i WHERE ft.fk_insumo=i.id_insumo INTO OUTFILE 'C:/Users/123/Desktop/camilo_vali/ReporteProducto.xls'` , function(error, result, fields){
+    if(error){
+        throw error;
+    }else{
+        setTimeout(function(){
+            res.redirect('/producto');
+        },5000)
+
+    }     
+    });
+
+})
 
 Router.get('/', (req, res)=>{
 

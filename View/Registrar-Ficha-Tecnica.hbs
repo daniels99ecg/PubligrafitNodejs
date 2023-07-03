@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>P-G Registrar Ficha Tecnica</title>
+  <title>P-G Registrar Ficha-Tecnica</title>
   <i class="bi bi-clipboard2-fill"></i>
   <!-- Favicon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
-<link rel="shortcut icon" href="../img/PubliGrafit2.png" type="image/x-icon">
+  <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon">
   <!-- Custom styles -->
   <link rel="stylesheet" href="../css/style.css">
 
@@ -31,12 +31,12 @@
   <div class="main-wrapper">
     <!-- ! Main nav -->
     <nav class="main-nav--bg">
-      {{>nav}}
+      <script src="./validar/nav.js"></script>
     </nav>
     <!-- ! Main -->
-   <script src="validar/validarU-R.js"></script>
+   <script src="validar/validar.js"></script>
    
-  <div class="card" style="width: 70%;">
+  <div class="card" style="width: 65%;">
 
     <div class="card-body" >
          <form action="/ficha_tecnica/save" method="post" id="ficha_tecnica">
@@ -66,10 +66,9 @@
                 
                 <label for="">Insumo(*)</label>
                 <select name="insumo" id="insumo" class="form-control">
-                  <option value="1">Papel Bond</option>
-                  <option value="2">Sellastrip</option>
-                  <option value="3">Guillotinas</option>
-                  <option value="4">Plumígrafos</option>
+                  {{#each title}}
+                  <option value="{{id_insumo}}">{{nombre}}</option>
+                  {{/each}}
                 </select>
                 
                 </select>
@@ -83,8 +82,7 @@
               </div>
             </div>
           
-       
-          <br>
+      
           <div class="form-row">
             
 
@@ -92,17 +90,15 @@
               <label for="inputEmail4" class="form-label">costo del insumo(*)</label>
               
               <input type="number" class="form-control" placeholder="costo del insumo" aria-label="Last name" id="costo_insumo" name="costo_insumo"> 
-            
-            
-            <div class="card" style="width: 35%; position: absolute; left: 30%;" >
+          
         
               <div class="card-body" >
-                  <input type="file" name="imagen_producto_final" id="imagen_producto_final" >
+                  <input type="file" class=" form-control-sm" name="imagen_producto_final" id="imagen_producto_final" >
                
               </div>
             </div>
-            </div>
-            <br><br><br><br><br>
+            
+            
             <div class="form-group"  style="width: 250px";>
               <label for="inputEmail4" class="form-label"></label>
               <label for="inputEmail4" class="form-label">costo final del producto(*)</label>
@@ -111,7 +107,7 @@
             </div>
           </div>
         </div>
-          <br>
+         
           <center>
           <div class="md-form" style="width: 35%;">
                 <label for="form7">Detalles</label>

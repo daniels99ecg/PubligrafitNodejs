@@ -5,16 +5,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>P-G Actualizar Ficha-Tecnica</title>
+  <title>P-G Registrar Ficha-Tecnica</title>
   <i class="bi bi-clipboard2-fill"></i>
   <!-- Favicon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
- <link rel="shortcut icon" href="../img/PubliGrafit2.png" type="image/x-icon">
+  <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon">
   <!-- Custom styles -->
   <link rel="stylesheet" href="../css/style.css">
-
+  <script src="../validar/validar.js"></script>
   
 
 </head>
@@ -34,15 +34,13 @@
       <script src="./validar/nav.js"></script>
     </nav>
     <!-- ! Main -->
-   <script src="../validar/validarU-R.js"></script>
+   <script src="validar/validar.js"></script>
    
   <div class="card" style="width: 70%;">
 
     <div class="card-body" >
       {{#each title}}
-      <form action="/ficha_tecnica/update/in/" method="post">
-      <div class="text-center">
-      <img class="img-fluid ml-5" src=https://dimidium.com.ec/wp-content/uploads/2020/06/INSUMOS.png alt="">
+         <form action="/ficha_tecnica/update/in/" method="post" id="ficha_tecnica">
 <center>
         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-clipboard2-fill" viewBox="0 0 16 16">
         <path d="M9.5 0a.5.5 0 0 1 .5.5.5.5 0 0 0 .5.5.5.5 0 0 1 .5.5V2a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 2v-.5a.5.5 0 0 1 .5-.5.5.5 0 0 0 .5-.5.5.5 0 0 1 .5-.5h3Z"/>
@@ -50,30 +48,31 @@
       </svg>
     </center>
 <div style="margin-left: 5%;">
-      <form>
 
-      <div class="form-row" style="margin-left: 30%;">
+      {{!-- <div class="form-row" style="margin-left: 30%;">
     
           <div class="col-xs-4"style="width:40%;">
-            <input type="number" value="{{id_ft}}" name="id" style="display: none;">
-            <label for="inputEmail4" class="form-label" style="display: flex;">nombre del producto(*)</label>
-            <input type="number" class="form-control" value="{{nombre}}"  placeholder="nombre" aria-label="Last name" id="nombre" name="nombre">
+            <label for="inputEmail4" class="form-label" style="display: flex;">Producto(*)</label>
+    
+            <input type="text" class="form-control" placeholder="producto" aria-label="Last name" id="producto" name="producto">
           </div>
-        </div>
+        </div> --}}
           
           
          
             <div class="form-row">
         
               <div class="col-xs-4" style="width: 27%;">
+                <input type="number" value="{{id_ft}}" name="id" style="display: none;">
                 
-                
-               <label for="">Insumo(*)</label>
-                <select name="insumo" id="insumo" class="form-control">
+                <label for="">Insumo(*)</label>
+                <select name="insumo" id="insumo" value="{{insumo}}" class="form-control" >
                   <option value="1">Papel Bond</option>
                   <option value="2">Sellastrip</option>
                   <option value="3">Guillotinas</option>
                   <option value="4">Plumígrafos</option>
+                </select>
+                
                 </select>
                 
               </div>
@@ -81,7 +80,7 @@
               <div class="col-xs-4" >
                 <label for="inputEmail4" class="form-label">Cantidad del insumo(*)</label>
         
-                <input type="number" class="form-control" value="{{cantidad_insumo}}"  placeholder="cantidad_insumo" aria-label="Last name" id="cantidad_insumo" name="cantidad_insumo">
+                <input type="text" class="form-control"value="{{cantidad_insumo}}" placeholder="cantidad_insumo" aria-label="Last name" id="cantidad_insumo" name="cantidad_insumo">
               </div>
             </div>
           
@@ -91,24 +90,25 @@
             
 
             <div class="col-xs-4" style="width: 27%; ">
+              <label for="inputEmail4" class="form-label">costo del insumo(*)</label>
+              
+              <input type="text" class="form-control"value="{{costo_insumo}}" placeholder="costo del insumo" aria-label="Last name" id="costo_insumo" name="costo_insumo"> 
             
-            </div>
-            <div class="col-xs-4"  >
-              <label for="inputEmail4" class="form-label">costo del insumo</label>
-      
-              <input type="number" class="form-control" value="{{costo_insumo}}"  placeholder="costo_insumo" aria-label="Last name" id="costo_insumo" name="costo_insumo">
-            </div>
-             <div class="card" style="width: 45%; position: absolute; left: 40%;" >
+            
+            <div class="card" style="width: 35%; position: absolute; left: 30%;" >
         
               <div class="card-body" >
-                  <input type="file" name="imagen_final_producto" id="imagen_final_producto" >
+                  <input type="file" name="imagen_producto_final"value="{{imagen_producto_final}}" id="imagen_producto_final" >
                
               </div>
             </div>
-            <div class="col-xs-4"  >
-              <label for="inputEmail4" class="form-label">costo final del producto</del></label>
+            </div>
+            <br><br><br><br><br>
+            <div class="form-group"  style="width: 250px";>
+              <label for="inputEmail4" class="form-label"></label>
+              <label for="inputEmail4" class="form-label">costo final del producto(*)</label>
       
-              <input type="number" class="form-control" value="{{costo_final_producto}}"  placeholder="costo_final_producto" aria-label="Last name" id="costo_final_producto" name="costo_final_producto">
+              <input type="text" class="form-control"value="{{costo_final_producto}}" placeholder="costo del final producto" aria-label="Last name" id="costo_final_producto" name="costo_final_producto">
             </div>
           </div>
         </div>
@@ -116,12 +116,12 @@
           <center>
           <div class="md-form" style="width: 35%;">
                 <label for="form7">Detalles</label>
-                <textarea id="detalle" name="detalle" value="{{detalle}}" class="md-textarea form-control" rows="" style=" border: 1px solid black;"></textarea>
+                <textarea id="detalle" value="{{detalle}}" name="detalle" class="md-textarea form-control" rows="" style=" border: 1px solid black;"></textarea>    
             </div>
           </center>
             <div class="col-12 row mr-5">
-                <button type="submit" class="btn btn-primary mr-5" onclick="validarFicha()">Actualizar</button>
-                <button type="button" class="btn btn-danger ">Cancelar</button>
+                <button type="button" class="btn btn-primary mr-5" onclick="validarFicha()">Actualizar</button>
+                <a href="/ficha_tecnica"><button type="button" class="btn btn-danger ">Cancelar</button></a>
               </div>
             
           </div> 
@@ -133,21 +133,7 @@
   
 
     <!-- ! Footer -->
-    <footer class="footer">
-  <div class="container footer--flex">
-    <div class="footer-start">
-      <p>2021 © Elegant Dashboard - <a href="elegant-dashboard.com" target="_blank"
-          rel="noopener noreferrer">elegant-dashboard.com</a></p>
-    </div>
-    <ul class="footer-end">
-      <li><a href="##">About</a></li>
-      <li><a href="##">Support</a></li>
-      <li><a href="##">Puchase</a></li>
-    </ul>
-  </div>
-</div>
-</div>
-</footer>
+
 
 
 <!-- codigo de modal -->
