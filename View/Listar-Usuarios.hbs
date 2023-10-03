@@ -14,6 +14,7 @@
 
 <link rel="stylesheet" href="css/style.css">
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <script src="validar/validarU-R.js"></script>
 
@@ -81,11 +82,12 @@
                 
            
             {{!-- <td><input type="checkbox"  name="switch-label" id="switch-label" onclick="estado()" checked></td>  --}}
-           <td><div class="switch-button">
-              <input type="checkbox" name="switch-button" id="switch-label" onclick="estado()" checked class="switch-button__checkbox" >
-              <label for="switch-label" class="switch-button__label"></label>
-          </div></td> 
-
+          <td>
+                    <div class="switch-button">
+                        <input type="checkbox" name="switch-button" id="switch-label-{{id_usuario}}" onclick="estado({{id_usuario}})" checked class="switch-button__checkbox">
+                        <label for="switch-label-{{id_usuario}}" class="switch-button__label"></label>
+                    </div>
+                </td>
            
 
             <td>

@@ -28,7 +28,7 @@ Router.get('/', (req, res)=>{
 
 Router.get('/create', (req, res)=>{
     
-    conexion.query('SELECT id_insumo, nombre FROM insumos' , function(error, result, fields){
+    conexion.query('SELECT id_insumo, nombre FROM insumos WHERE estado=true' , function(error, result, fields){
         if(error){
             throw error;
         }else{

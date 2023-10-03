@@ -151,5 +151,21 @@ Router.get('/update/:id', (req, res)=>{
             
           
         })
+
+
+ Router.post('/cambiar/', (req, res)=>{
+
+    const algo=req.body.nuevoEstado
+    const id=req.body.productoId;
+    conexion.query(`UPDATE usuario SET estado=${algo} WHERE id_usuario='${id}'`, function(error, result, fields){
+        if(error){
+            console.log(error);
+        }else{
+            res.redirect('/usuarios');
+        }     
+        });
+ });
+ 
+ 
     
 module.exports=Router;

@@ -13,6 +13,7 @@
 
   <link rel="stylesheet" href="./css/style.css">
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   
 <script src="validar/validarU.js"></script>
@@ -74,10 +75,13 @@
             <td>{{precio}}</td>
             <td>{{cantidad}}</td>
             {{!-- <td><input type="checkbox" name=""></td> --}}
-            <td><div class="switch-button">
-              <input type="checkbox" name="switch-button" id="switch-label" onclick="estado()" checked class="switch-button__checkbox" >
-              <label for="switch-label" class="switch-button__label"></label>
-          </div></td>
+               <td>
+                    <div class="switch-button">
+                        <input type="checkbox" name="switch-button" id="switch-label-{{id_insumo}}" onclick="estado({{id_insumo}})" checked class="switch-button__checkbox">
+                        <label for="switch-label-{{id_insumo}}" class="switch-button__label" ></label>
+                    </div>
+                </td>
+
             <td>
                <a href="/insumos/update/{{id_insumo}}"> <button type="button" class="btn btn-outline-secondary">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
