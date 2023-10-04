@@ -47,6 +47,9 @@ app.post('/ingreso', (req, res)=>{
             if(result.length>0){
                 const user=result[0]
                     if(user.fk_rol2===1){
+
+
+                        
                         res.status(200).render('../View/dashboard')
                     }
                     else{
@@ -66,7 +69,16 @@ app.post('/ingreso', (req, res)=>{
   
 })
 
-
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+      if (err) {
+        console.error('Error al destruir la sesión:', err);
+        res.sendStatus(500);
+      } else {
+        res.redirect('/ingreso'); // Puedes redirigir a donde desees después de cerrar sesión
+      }
+    });
+  });
 
 app.get('/dashboard', (req, res)=>{
     res.status(200).render('../View/dashboard')
