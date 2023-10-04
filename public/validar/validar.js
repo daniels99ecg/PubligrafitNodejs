@@ -8,34 +8,56 @@ Reportar = () =>{
   })
   }
 
-//Pruebas de estado
-function estado(){
-  
-
-  const validar=document.getElementById('switch-label');
-  
-  if(validar.checked){
-    localStorage.setItem('estado', true);
-    if(localStorage.getItem('estado')==='true'){
-      document.getElementById('lista').style.color='black';
-    
-    }
-    }else{
-      localStorage.setItem('estado', false);
-
-      if( localStorage.getItem('estado')==='false'){
-        document.getElementById('lista').style.color='#878787';
-      
+//El checkbox de el estado.
+function inicializarEstados() {
+  // Iterar a través de todos los elementos con ID switch-label-
+  // y establecer su estado según el localStorage
+  const switches = document.querySelectorAll('[id^="switch-label-"]');
+  switches.forEach(switchElement => {
+      const id = switchElement.id.split('-')[2]; // Obtener el ID del producto
+      const estadoGuardado = localStorage.getItem('switchEstado-' + id);
+      if (estadoGuardado !== null) {
+          // Si hay un estado guardado en el localStorage, establecer el estado del interruptor
+          switchElement.checked = estadoGuardado === "false"; // Convierte el valor de cadena en un booleano
       }
-      
-      
-      
-      
-      
-  }
-   // Almacenar el título modificado en el almacenamiento local
-   
+
+
+  });
+
 }
+
+// Esta función cambia el estado y guarda en el localStorage
+function estado(id) {
+  const validar = document.getElementById('switch-label-' + id);
+  const estadoActual = validar.checked;
+
+  // Cambiar el estado y guardar en el localStorage
+  localStorage.setItem('switchEstado-' + id, !estadoActual);
+
+  // Enviar una solicitud AJAX para cambiar el estado en el servidor
+  $.ajax({
+      url: '/producto/cambiar',
+      type: 'POST',
+      data: { productoId: id, nuevoEstado: estadoActual },
+      success: function (result) {
+          // Manejar la respuesta si es necesario
+          console.log(result);
+      },
+      error: function (error) {
+          console.error(error);
+      }
+  });
+
+
+
+}
+
+// Llamar a la función para inicializar los estados cuando la página se carga
+document.addEventListener('DOMContentLoaded', inicializarEstados); 
+
+
+
+
 // Validar Usuarios Daniel
 
 

@@ -61,7 +61,7 @@ Router.get('/reporte', (req, res)=>{
 
 Router.get('/create', (req, res)=>{
     
-    conexion.query('SELECT id_producto, nombre_producto, precio FROM producto WHERE 1' , function(error, result, fields){
+    conexion.query('SELECT id_producto, nombre_producto, precio FROM producto WHERE estado=true' , function(error, result, fields){
         if(error){
                 throw error;
             }else{

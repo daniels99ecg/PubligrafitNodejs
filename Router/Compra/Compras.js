@@ -64,7 +64,7 @@ Router.get('/reporte', (req, res)=>{
 
 Router.get('/create', (req, res)=>{
     //validacion 
-    conexion.query(`SELECT id_insumo, nombre FROM insumos WHERE 1;
+    conexion.query(`SELECT id_insumo, nombre FROM insumos WHERE estado=true;
     ` , function(error, result, fields){
         if(error){
             throw error;

@@ -90,7 +90,7 @@
  
 
 </div>
-  </div>
+  
 <script>
   function calcularSubtotal(row) {
     var cantidad = parseFloat(row.cells[1].getElementsByTagName("input")[0].value);
@@ -149,11 +149,12 @@
   </table>
    
 
-  <div class="col-12 row mr-2" style="margin-left: 32%;">
+ <div style="margin-left: 34%;">
+      <div class="col">
     <button type="button" class="btn btn-primary mr-5" onclick="validarVenta()" >Registrar</button>
     <a href="/ventas"><button type="button" class="btn btn-danger ">Cancelar</button></a>
   </div>
-
+</div>
 </form>
   </div>
 </div>

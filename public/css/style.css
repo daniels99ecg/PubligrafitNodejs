@@ -225,13 +225,6 @@ button,
  * Remove the inner border and padding in Firefox.
  */
 
-button::-moz-focus-inner,
-[type="button"]::-moz-focus-inner,
-[type="reset"]::-moz-focus-inner,
-[type="submit"]::-moz-focus-inner {
-  border-style: none;
-  padding: 0;
-}
 
 /**
  * Restore the focus styles unset by the previous rule.
@@ -771,7 +764,7 @@ img {
   margin-bottom: 0;
 }
 
-.white-block.checkboxes input {
+.white-block.checkboxes .input {
   margin-right: 12px;
   width: 16px;
   height: 16px;
@@ -1901,9 +1894,10 @@ input:focus {
   box-shadow: 0 0 0 2px rgba(134, 182, 254, 0.5);
 }
 
-input:enabled:read-write:-webkit-any(:focus, :hover)::-webkit-calendar-picker-indicator {
+/* Esta linea de codigo no me deja funcionar el calendario en la aplicación */
+/* input:enabled:read-write:-webkit-any(:focus, :hover)::-webkit-calendar-picker-indicator {
   display: none !important;
-}
+} */
 
 .check {
   position: relative;
@@ -3423,7 +3417,7 @@ label {
   box-shadow: none;
 }
 
-.darkmode .stat-cards-info__num {
+.darkmode .stat-cards-info__num .id-table{
   color: #EFF0F6;
 }
 
@@ -3442,11 +3436,11 @@ label {
   background-color: #161624;
 }
 
-.darkmode .users-table {
+.darkmode .users-table{
   color: #EFF0F6;
 }
 
-.darkmode .users-table-info {
+.darkmode .users-table-info{
   border-bottom-color: transparent;
   color: #EFF0F6;
 }
@@ -3558,7 +3552,13 @@ label {
 .darkmode .menu-toggle--gray {
   background-image: url(../img/svg/Bulk/Menu-toggle-white.svg);
 }
+.darkmode .table-hover{
+  color: white;
+}
 
+.darkmode .card{
+  background-color: #222235;
+}
 .moon-icon {
   display: none;
 }

@@ -39,7 +39,7 @@ app.get('/', (req, res)=>{
 app.post('/ingreso', (req, res)=>{
     const correo=req.body.correo;
     const contrasena=req.body.contrasena;
-    conexion.query(`SELECT * FROM usuario WHERE email='${correo}' and contrasena='${contrasena}'` , function(error, result, fields){
+    conexion.query(`SELECT * FROM usuario WHERE email='${correo}' and contrasena='${contrasena}' and estado=true` , function(error, result, fields){
         
         if(error){
             throw error;
