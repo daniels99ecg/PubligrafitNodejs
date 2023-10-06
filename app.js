@@ -8,7 +8,6 @@ const conexion = require('./database/db.js');
 
 const app=express();
 
-
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
@@ -20,9 +19,6 @@ hbs.registerPartials(__dirname + '/View', function (err) {});
 hbs.registerPartials(__dirname + '/View/Empleado', function (err) {});
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/View');  
-
-
-
 
 
 // app.get('/', (req, res)=>{
@@ -46,43 +42,26 @@ app.post('/ingreso', (req, res)=>{
         }else{
             if(result.length>0){
                 const user=result[0]
-                    if(user.fk_rol2===1){
-
-
-                        
+                    if(user.fk_rol2===1){     
                         res.status(200).render('../View/dashboard')
                     }
                     else{
                         res.status(400).render('../View/Empleado/dashboard2');
-                    }
-                
-                
+                    }     
             }
             else{
               res.status(400).send('No ingreso');
             }
-
-            
-
         }     
         });
-  
 })
 
-app.get('/logout', (req, res) => {
-    req.session.destroy((err) => {
-      if (err) {
-        console.error('Error al destruir la sesión:', err);
-        res.sendStatus(500);
-      } else {
-        res.redirect('/ingreso'); // Puedes redirigir a donde desees después de cerrar sesión
-      }
-    });
-  });
 
 app.get('/dashboard', (req, res)=>{
     res.status(200).render('../View/dashboard')
 })
+
+//Llamado a la funcion donde estan todas las rutas 
 resApi(app);
 
 
