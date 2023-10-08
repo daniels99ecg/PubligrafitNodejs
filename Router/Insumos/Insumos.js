@@ -4,22 +4,14 @@ const conexion=require('../../database/db');
 const path=require('path');
 const Swal =require('sweetalert2');
 
+const insumo=require('../../Controller/Insumos/InsumoController')
+const insumos=new insumo();
 Router.use(express.static('public'));
 Router.use(express.static(path.join(__dirname, 'public')));
 
+//Esto es para listar los insumos en la vista 
+Router.get('/', insumos.listarInsumos)
 
-Router.get('/', (req, res)=>{
-
-    conexion.query('SELECT*FROM insumos' , function(error, result, fields){
-        if(error){
-            throw error;
-        }else{
-            res.status(200).render('../View/Listar-Insumos', {title:result})
-
-        }     
-        });
-  
-})
 
 Router.post('/buscar/', (req, res)=>{
     const id=req.body.id;
