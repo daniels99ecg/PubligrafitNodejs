@@ -4,7 +4,7 @@ const conexion=require('../../database/db');
 const path=require('path');
 const Swal =require('sweetalert2');
 
-const insumo=require('../../Controller/Insumos/InsumoController')
+const insumo=require('../../Controller/Insumos/insumosController')
 const insumos=new insumo();
 Router.use(express.static('public'));
 Router.use(express.static(path.join(__dirname, 'public')));

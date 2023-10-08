@@ -1,4 +1,4 @@
-const insumos=require('../../Service/Insumos/insumosModel')
+const insumos=require('../../Service/Insumos/InsumosModel')
 const insumo=new insumos()
 
 class insumosController{
