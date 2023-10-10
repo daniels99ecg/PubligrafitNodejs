@@ -9,7 +9,7 @@ class insumosModel{
         conexion.query(`SELECT*FROM insumos WHERE id_insumo='${id}'`, callback)
     }
     async reporteInsumos(callback){
-        conexion.query(` SELECT*FROM insumos INTO OUTFILE 'c:/Users/HOME/Desktop/reportes.xls'` , callback)
+        conexion.query(`SELECT*FROM insumos INTO OUTFILE 'c:/Users/HOME/Desktop/reportes.xls'` , callback)
     }
     async guardarInsumos(nombre,precio,cantidad,callback){
         conexion.query(`INSERT INTO insumos SET ?`, {nombre:nombre,precio:precio,cantidad:cantidad},callback)

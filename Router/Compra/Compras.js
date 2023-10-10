@@ -7,6 +7,8 @@ const Swal =require('sweetalert2');
 Router.use(express.static('public'));
 Router.use(express.static(path.join(__dirname, 'public')));
 
+
+
 Router.get('/detalle/:idd', (req, res) => {
     const idd = req.params.idd;
     conexion.query(`SELECT c.id_compra, i.id_insumo, c.fecha, i.nombre, c.proveedor, dc.cantidad, dc.precio, dc.iva, (dc.cantidad*dc.precio) AS subtotal, ROUND((dc.cantidad*dc.precio*dc.iva)+(dc.cantidad*dc.precio), 2) AS total FROM compras c, detalle_compra dc, insumos i WHERE dc.fk_compra=c.id_compra and dc.fk_insumo=i.id_insumo and c.id_compra='${idd}'`, function(error, result, fields) {
