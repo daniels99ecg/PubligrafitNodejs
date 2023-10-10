@@ -3,21 +3,15 @@ const Router=express.Router()
 const conexion=require('../../database/db');
 const path=require('path');
 
+const Clientes=require('../../Controller/Cliente/clienteController')
+const Clientes1=new Clientes()
 Router.use(express.static('public'));
 Router.use(express.static(path.join(__dirname, 'public')));
 
-Router.get('/', (req, res)=>{
+//Mostrar los clientes en la pagina 
+Router.get('/', Clientes1.mostrarCliente)
 
-    conexion.query('SELECT * FROM cliente WHERE 1' , function(error, result, fields){
-        if(error){
-            throw error;
-        }else{
-            res.status(200).render('../View/Listar-Clientes', {title:result})
 
-        }     
-        });
-      
-})
 
 Router.post('/search/', (req, res) => {
     const id = req.body.id;

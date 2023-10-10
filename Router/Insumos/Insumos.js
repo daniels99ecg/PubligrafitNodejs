@@ -4,16 +4,14 @@ const conexion=require('../../database/db');
 const path=require('path');
 const Swal =require('sweetalert2');
 
+const insumo=require('../../Controller/Insumos/insumosController')
+const insumos=new insumo();
 Router.use(express.static('public'));
 Router.use(express.static(path.join(__dirname, 'public')));
 
-
-const insumo=require('../../Controller/Insumos/insumosController')
-const insumos=new insumo();
-// Esta linea es para listar los insumos de la vistas.
+//Esto es para listar los insumos en la vista 
 Router.get('/', insumos.listarInsumos)
-// Esta linea es para buscar los insumos en el listar de la vista
-Router.post('/buscar/', insumos.buscarInsumos)
+
 //Generar el reporte
 Router.get('/reporte', insumos.reporteInsumos)
 // Esta linea es para mostrar el insumo en la vista
