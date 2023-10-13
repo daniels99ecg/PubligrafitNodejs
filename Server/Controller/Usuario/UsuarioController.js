@@ -10,7 +10,9 @@ class UsuarioController{
             if (error) {
               throw error;
             } else {
-              res.status(200).render('../View/Listar-Usuarios', { title: result });
+            //   res.status(200).render('../View/Listar-Usuarios', { title: result });
+
+            res.status(200).send(result)
             }
         })
     }
@@ -63,7 +65,9 @@ class UsuarioController{
                 console.log(error);
             }else{
              
-                res.redirect('/usuarios');
+                // res.redirect('/usuarios');
+                res.status(200).send('Usuario creado con exito')
+
             }     
             });
     }

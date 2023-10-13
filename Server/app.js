@@ -1,6 +1,7 @@
 const express=require('express');
 const resApi = require('./Router/index.js');
 const hbs=require('hbs');
+const cors=require("cors")
 
 const path=require('path');
 const conexion = require('./database/db.js');
@@ -10,6 +11,8 @@ const app=express();
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+
+app.use(cors())
 
 app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -65,6 +68,6 @@ app.get('/dashboard', (req, res)=>{
 resApi(app);
 
 
-app.listen(3000, ()=>{
+app.listen(3001, ()=>{
     console.log('Server in line')
 })
