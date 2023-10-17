@@ -2,6 +2,7 @@ const express=require('express')
 const Router=express.Router()
 const path=require('path');
 const Swal =require('sweetalert2');
+const cors=require("cors")
 
 Router.use(express.static('public'));
 Router.use(express.static(path.join(__dirname, 'public')));
@@ -12,6 +13,7 @@ const { error } = require('console');
 const usuariocontroller=require('../../Controller/Usuario/UsuarioController')
 const usuarioCon = new usuariocontroller;
 
+Router.use(cors())
 
 //Ver todos los usuarios
 Router.get('/', usuarioCon.buscarUsuario);
